@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.rnfs.RNFSPackage;
+import com.timsapp.sample.SamplePackager;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -25,9 +26,12 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
+      System.out.println("--Tim-- getPackages()");
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(), // <---- add comma
           new RNFSPackage()
+
+        ,  new SamplePackager()
       );
     }
   };
