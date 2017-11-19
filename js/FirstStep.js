@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 
 
-
+const {ToastSamp} = NativeModules;
 
 export default class ToastExample extends Component {
 	
@@ -27,21 +27,18 @@ export default class ToastExample extends Component {
 	
 	
 	show=()=>{
-		let ToastSamp = NativeModules.ToastSamp;
 		let {LONG,SHORT} = ToastSamp;
 		ToastSamp.show("call exposed methods from Native module ",LONG)
 	}
 	
 	
 	callbackSamp=()=>{
-		let ToastSamp = NativeModules.ToastSamp;
 		 ToastSamp.callbackInv(function (message) {
 			 alert(message)
 		 })
 	}
 	
 	promiseSamp=()=>{
-		let ToastSamp = NativeModules.ToastSamp;
 		 ToastSamp.promiseInv().then(arr=>{
 		 	alert(JSON.stringify( arr))
 		 })
@@ -65,7 +62,7 @@ export default class ToastExample extends Component {
 				<Button onPress={this.promiseSamp} color="lightblue" title={"promise call from Native module"}/>
 				<Button onPress={this.sendEvent} color="#323223" title={" send event from Native module "}/>
 			
-			
+				
 			</View>
 		);
 	}

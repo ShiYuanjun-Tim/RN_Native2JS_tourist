@@ -15,7 +15,7 @@ import {
 	View, Dimensions, NavigatorIOS,NativeModules
 } from 'react-native';
 import FirstStep from "./FirstStep"
-
+import CallJS from "./CallJS"
 
 
 export default class TimsApp extends Component {

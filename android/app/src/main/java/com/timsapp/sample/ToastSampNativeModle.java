@@ -1,6 +1,7 @@
 package com.timsapp.sample;
 
 
+import android.util.Log;
 import android.widget.Toast;
 
 import com.facebook.react.bridge.Arguments;
@@ -34,7 +35,7 @@ public class ToastSampNativeModle extends ReactContextBaseJavaModule {
 
     @Override
     public String getName() {
-        System.out.println("--Tim--"+ToastSampNativeModle.class.getName()+" getName()");
+        Log.i("--Tim--",ToastSampNativeModle.class.getName()+" getName()");
         return "ToastSamp";
     }
 
@@ -50,15 +51,17 @@ public class ToastSampNativeModle extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void show(String txt,int duration){
-        System.out.println("--Tim--"+ToastSampNativeModle.class.getName()+" show("+txt+")");
+        Log.i("--Tim--",ToastSampNativeModle.class.getName()+" show("+txt+")");
 
         Toast.makeText(getReactApplicationContext(), txt, duration).show();
 
+        this.getReactApplicationContext()
+                .getJSModule(CallJS.class).callll("callll");
     }
 
     @ReactMethod
     public void callbackInv(Callback cb){
-        System.out.println("--Tim--"+ToastSampNativeModle.class.getName()+" callbackInv()");
+        Log.i("--Tim--",ToastSampNativeModle.class.getName()+" callbackInv()");
 
         cb.invoke("the message is from ToastSampNativeModle.callbackInv");
 
@@ -66,7 +69,7 @@ public class ToastSampNativeModle extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void promiseInv(Promise promise){
-        System.out.println("--Tim--"+ToastSampNativeModle.class.getName()+" promiseInv()");
+        Log.i("--Tim--",ToastSampNativeModle.class.getName()+" promiseInv()");
 
         WritableArray arr= Arguments.createArray();
         arr.pushBoolean(true);
@@ -78,7 +81,7 @@ public class ToastSampNativeModle extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void sendEvent(){
-        System.out.println("--Tim--"+ToastSampNativeModle.class.getName()+" sendEvent()");
+        Log.i("--Tim--",ToastSampNativeModle.class.getName()+" sendEvent()");
         this.getReactApplicationContext()
                 .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
                 .emit("shiyuanjunEvent","event data from native");

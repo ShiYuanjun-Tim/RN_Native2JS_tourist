@@ -1,5 +1,7 @@
 package com.timsapp.sample;
 
+import android.telecom.Call;
+
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
 import com.facebook.react.bridge.NativeModule;
@@ -28,7 +30,9 @@ public class SamplePackager implements ReactPackage {
 
     @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
-        return Collections.emptyList();
+        List<Class<? extends JavaScriptModule>> jsModules = new ArrayList<>();
+        jsModules.add(CallJS.class);
+        return jsModules;
     }
 
     @Override
